@@ -1,0 +1,88 @@
+﻿@page "/ViewMessageBoard"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IMBoardService MBoardService
+
+<h3>Message Board Messages</h3>
+<div class="d-flex flex-row" style="margin: auto">
+    <div style="margin-right: 15px">
+        <button style="width: 110px" @onclick="@(() => doShowFilters = !doShowFilters)">@(doShowFilters ? "Hide Filters" : "Show Filters")</button>
+    </div>
+    <div>
+        @if (doShowFilters)
+        {
+            <div class="d-flex flex-row">
+                <div class="filter">
+                    <label>username:</label>
+                    <input type="text" @bind="usernameFilter" style="margin-right: 15px"/>
+                </div>
+                
+            <div class="filter">
+                <label>Title contains:</label>
+                <input type="text" @bind="titleContainsFilter" style="margin-right: 15px"/>
+            </div>
+            
+            <div>
+                <button @onclick="LoadMessageBoard">Apply filters</button>
+            </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@if (messageBoards == null)
+{
+}
+else if (!messageBoards.Any())
+{
+    <p>No Messages to display</p>
+}
+else
+{
+
+    @foreach (var item in messageBoards)
+    {
+        <a href="/viewSingleMessage/@item.Id" style="text-decoration: none; color: black;">
+        <Card Title="@item.Title"  UserName="@item.Owner.UserName" ItemId="@item.Id" TimeStamp="@item.Time"/>
+        </a>
+    }
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+    private IEnumerable<MessageBoard>? messageBoards;
+    private string msg = "";
+
+    private bool doShowFilters = false;
+
+    private string? usernameFilter;
+    private string? titleContainsFilter;
+    private string? bodyFilter;
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadMessageBoard();
+    }
+
+    private async Task LoadMessageBoard()
+    {
+        try
+        {
+            messageBoards = await MBoardService.GetAsync(usernameFilter, titleContainsFilter, bodyFilter);
+            
+            messageBoards = messageBoards.OrderByDescending(messageBoard => messageBoard.Time);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+    
+
+}

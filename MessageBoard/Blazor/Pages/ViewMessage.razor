@@ -1,0 +1,95 @@
+﻿<h3>ViewMessage</h3>
+
+@using Domain.DTOs
+@using Domain.Models
+@using Blazor.Pages
+@using HttpClients.ClientInterfaces
+@using System.Security.Claims
+
+@inject IMBoardService MBoardService
+
+
+    @if (mBoardDTO == null)
+    {
+        <label>Loading message data..</label>
+    }
+    else
+    {
+        if (userName.Equals(name))
+        {
+            editAllowed = true;
+            deleteAllowed = true;
+        }
+        
+        <Card Title="@title"  UserName="@userName" ItemId="@id" Body="@body" editAllowed="@editAllowed" deleteAllowed="@deleteAllowed"/>
+    }
+    @if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; } = null!;
+
+    private string? name;
+    private IEnumerable<Claim>? userClaims;
+    private bool isLoggedIn;
+
+    private string body;
+    private bool editAllowed = false;
+    private bool deleteAllowed = false;
+    private string title;
+    private string userName;
+    private int id;
+    private int userId;
+
+    private MBoardBasicDto mBoardDTO;
+    private string msg = "";
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+    // This method will be invoked when the page is first initialized.
+        await LoadMessageBoard();
+        AuthenticationState authState = await AuthState;
+        ClaimsPrincipal user = authState.User;
+        isLoggedIn = user.Identity != null;
+        
+        if (!isLoggedIn) return;
+        
+        userClaims = user.Claims;
+        name = user.Identity!.Name;
+        
+        var idClaim = userClaims.FirstOrDefault(claim => claim.Type == "id");
+        if (idClaim != null)
+        {
+            userId = int.Parse(idClaim.Value);
+        }
+    }
+
+    private async Task LoadMessageBoard()
+    {
+        try
+        {
+            mBoardDTO = await MBoardService.GetByIdAsync(Id);
+
+            body = mBoardDTO.Body;
+            title = mBoardDTO.Title;
+            userName = mBoardDTO.OwnerName;
+            id = mBoardDTO.Id;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+
+
+}

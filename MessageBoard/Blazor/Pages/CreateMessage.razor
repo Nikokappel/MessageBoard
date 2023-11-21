@@ -1,0 +1,113 @@
+﻿@page "/CreateMessage"
+@using Domain.Models
+@using Domain.DTOs
+@using HttpClients.ClientInterfaces
+@using System.Security.Claims
+@inject IMBoardService MBoardService
+@inject IUserService userService
+@inject NavigationManager navMgr
+@attribute [Authorize]
+    
+    @if (users == null)
+    {
+        <label>Loading users...</label>
+    }
+    else if (!users.Any())
+    {
+        <label>No users, you cannot create a Message without assignee.</label>
+    }
+    else
+    {
+        <h3>Create Message</h3>
+        <div class="form-group field my-2">
+            <label>Title</label><br/>
+            <input type="text" @bind="messageTitle" placeholder="Enter a title..." style="width: 400px;"/>
+        </div>
+        <div class="form-group field my-3">
+            <label>body</label><br/>
+            <textarea @bind="messageBody" placeholder="Write the body of your post here" style="width: 400px; height: 300px;"></textarea>
+        </div>
+        <div class="button-row">
+            @if (!string.IsNullOrEmpty(msg))
+            {
+                <label style="color: red">@msg</label>
+            }
+            <button @onclick="Create" class="btn btn-success my-3">Publish Message</button>
+        </div>
+    }
+
+@code {
+    
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; } = null!;
+
+    private string? name;
+    private IEnumerable<Claim>? userClaims;
+    private bool isLoggedIn;
+    
+    private IEnumerable<User>? users;
+    private int userId;
+    private string messageTitle = "";
+    private string messageBody = "";
+
+    private string msg = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            users = await userService.AsyncGetUser();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+        AuthenticationState authState = await AuthState;
+        ClaimsPrincipal user = authState.User;
+        isLoggedIn = user.Identity != null;
+        
+        if (!isLoggedIn) return;
+        
+        userClaims = user.Claims;
+        name = user.Identity!.Name;
+        
+        var idClaim = userClaims.FirstOrDefault(claim => claim.Type == "id");
+        if (idClaim != null)
+        {
+            userId = int.Parse(idClaim.Value);
+        }
+
+
+    }
+
+    private async Task Create()
+    {
+        msg = "";
+        if (string.IsNullOrEmpty(messageTitle))
+        {
+            msg = "Title cannot be empty!";
+            return;
+        }
+        if (string.IsNullOrEmpty(messageBody))
+        {
+            msg = "Body cannot be empty!";
+            return;
+        }
+
+
+        try
+        {
+            MBoardCreationDto dto = new(userId, messageTitle, messageBody, "");
+            await MBoardService.CreateAsync(dto);
+            navMgr.NavigateTo("/ViewMessageBoard");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    } 
+    
+}

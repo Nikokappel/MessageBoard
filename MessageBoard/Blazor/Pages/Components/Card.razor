@@ -1,0 +1,53 @@
+﻿@using HttpClients.ClientInterfaces
+@inject IMBoardService MBoardService
+@inject NavigationManager navMgr
+
+
+<h3>Card</h3>
+
+<div class="border border-dark Card padded">
+    <div class="padded">
+        <h3>@Title</h3>
+        <p class="timestamp">@Time</p>
+        <p>By @UserName</p>
+        <p>@Body</p>
+        @if (editAllowed) {
+            <div>
+                <a href="/EditMessage/@ItemId"><button class="editBtn btn btn-success">Edit</button></a>
+            </div>
+        }
+        @if (deleteAllowed) {
+            <div>
+                <button class="deleteBtn btn btn-success" @onclick="@(() => Delete(ItemId))">Delete</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public int? ItemId { get; set; }
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? UserName { get; set; }
+    [Parameter] public string? Body { get; set; }
+    [Parameter] public string? Time { get; set; }
+
+    [Parameter] public bool editAllowed { get; set; } = false;
+    [Parameter] public bool deleteAllowed { get; set; } = false;
+    public string msg = "";
+    
+    private async Task Delete(int? id)
+    {
+        try
+        {
+            await MBoardService.DeleteAsync(id);
+            navMgr.NavigateTo("/ViewMessageBoard");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    } 
+
+
+}

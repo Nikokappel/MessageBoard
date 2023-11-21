@@ -1,0 +1,112 @@
+{
+  "Users": [
+    {
+      "UserId": 1,
+      "FirstName": "Bent",
+      "LastName": "Bentsen",
+      "UserName": "Bento",
+      "Password": "bento1"
+    },
+    {
+      "UserId": 2,
+      "FirstName": "Ole",
+      "LastName": "Olsen",
+      "UserName": "Olof",
+      "Password": "Olofo"
+    },
+    {
+      "UserId": 3,
+      "FirstName": "Karl",
+      "LastName": "Karlsen",
+      "UserName": "Karlo",
+      "Password": "karl1"
+    },
+    {
+      "UserId": 4,
+      "FirstName": "Earl",
+      "LastName": "Earlson",
+      "UserName": "Earlo",
+      "Password": "earl1"
+    }
+  ],
+  "MessageBoards": [
+    {
+      "Id": 1,
+      "Owner": {
+        "UserId": 1,
+        "FirstName": "Bent",
+        "LastName": "Bentsen",
+        "UserName": "Bento",
+        "Password": "bento1"
+      },
+      "Title": "Mad",
+      "Body": "Pizza er godt",
+      "Time": null
+    },
+    {
+      "Id": 2,
+      "Owner": {
+        "UserId": 1,
+        "FirstName": "Bent",
+        "LastName": "Bentsen",
+        "UserName": "Bento",
+        "Password": "bento1"
+      },
+      "Title": "Drikkevarer",
+      "Body": "Vand er kedeligt",
+      "Time": "2023-11-20 13:39:32"
+    },
+    {
+      "Id": 3,
+      "Owner": {
+        "UserId": 1,
+        "FirstName": "Bent",
+        "LastName": "Bentsen",
+        "UserName": "Bento",
+        "Password": "bento1"
+      },
+      "Title": "Lego",
+      "Body": "Lego klodser er sjove",
+      "Time": "13:40:37"
+    },
+    {
+      "Id": 4,
+      "Owner": {
+        "UserId": 2,
+        "FirstName": "Ole",
+        "LastName": "Olsen",
+        "UserName": "Olof",
+        "Password": "Olofo"
+      },
+      "Title": "Vin",
+      "Body": "et godt glas vin om aftenen er fantastisk!",
+      "Time": "13:55:11"
+    },
+    {
+      "Id": 5,
+      "Owner": {
+        "UserId": 1,
+        "FirstName": "Bent",
+        "LastName": "Bentsen",
+        "UserName": "Bento",
+        "Password": "bento1"
+      },
+      "Title": "Burger",
+      "Body": "Min favorit burger er helt klart en big mac",
+      "Time": "14:00:52"
+    },
+    {
+      "Id": 6,
+      "Owner": {
+        "UserId": 1,
+        "FirstName": "Bent",
+        "LastName": "Bentsen",
+        "UserName": "Bento",
+        "Password": "bento1"
+      },
+      "Title": "qwert",
+      "Body": "werty",
+      "Time": "09.44.43"
+    }
+  ]
+}

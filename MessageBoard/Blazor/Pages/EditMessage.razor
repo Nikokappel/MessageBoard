@@ -1,0 +1,79 @@
+﻿@page "/EditMessage/{id:int}"
+@using Domain.DTOs
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IMBoardService MBoardService
+@inject NavigationManager navMgr
+
+<h3>EditMessage</h3>
+
+@if (dto == null)
+{
+    <label>Loading message data..</label>
+}
+else
+{
+        
+    <h3>Update Message Board</h3>
+    <div class="border border-dark Card padded">
+        <div class="padded">
+            <input class="title" @bind="dto.Title"/>
+            <p class="timestamp"></p>
+            <p></p>
+            <textarea @bind="dto.Body" placeholder="Write the body of your message here" class="content"></textarea>
+            <div class="button-row">
+                <button @onclick="UpdateAsync" class="editBtn btn btn-success">Update</button>
+            </div>
+        </div>
+    </div>
+        
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private MBoardUpdateDto dto = null!;
+    private string msg = "";
+    
+    
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            MBoardBasicDto MessageData = await MBoardService.GetByIdAsync(Id);
+            
+
+            dto = new(Id)
+            {
+                Title = MessageData.Title,
+                Body = MessageData.Body
+            };
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+    
+    
+    private async Task UpdateAsync()
+    {
+        try
+        {
+            await MBoardService.UpdateAsync(dto);
+            navMgr.NavigateTo("/ViewMessage/"+Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

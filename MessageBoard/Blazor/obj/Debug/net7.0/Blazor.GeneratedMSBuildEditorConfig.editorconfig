@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Blazor
+build_property.RootNamespace = Blazor
+build_property.ProjectDir = C:\Users\Admin\Downloads\MessageBoard (2)\MessageBoard\Blazor\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Admin\Downloads\MessageBoard (2)\MessageBoard\Blazor
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/Components/Card.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/CreateMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlTWVzc2FnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/EditMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE1lc3NhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/ViewMBoard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld01Cb2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/ViewMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld01lc3NhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/ViewMessageBoard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld01lc3NhZ2VCb2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/ViewUsers.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld1VzZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/Components/LoginButtons.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xMb2dpbkJ1dHRvbnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-1to9tkakbg
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/CreateUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlVXNlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-m2zhfnqur1
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-n3b4hveadi
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-r0yqwuvdyg
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6hj6azdo60
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/Downloads/MessageBoard (2)/MessageBoard/Blazor/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
